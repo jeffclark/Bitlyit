@@ -1,0 +1,16 @@
+Bitlyit is a PHP function and javascript example of how to create a bitly short URL from jQuery ajax.
+
+Originally uploaded for a tutorial on my blog. 
+
+To use:
+1) Checkout this repo into your web root
+2) Open ajax_bitly.php and enter your bit.ly username and API key on line 25. If you don't have a username/key yet, get one here: http://bit.ly/a/your_api_key
+3) Open bitlyit_demo.html in a browser window.
+4) Enter a URL into the input box and click "Shorten this URL!". Be sure you include http:// in your URL or it will fail.
+5) Hooray!
+
+Use at your own risk, but feel free to send me a message if you have any questions or issues:
+
+Author: Jeff Clark
+Website: http://www.vacantcanvas.com
+Twitter: @ClarkleSparkle
