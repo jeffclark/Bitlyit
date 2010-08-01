@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>Bitlyit</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script> 
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.ajaxSetup({
+					cache:false
+				});
+				
+				// grab the URL
+				$('a#shortenit').click(function() {
+					var longUrl = $('input#longUrl').val();	
+					
+					// check to make sure the URL is legit
+					if (-1 == longUrl.indexOf('http://')){ 
+						alert('Your URL must include http://');
+						return false;
+					} else {
+					
+						// proceed on with the ajax-ing
+						$('p#status').html('getting your link...');
+						$.post('ajax_bitly.php'
+							, { 'url':longUrl }
+							, function(data) {
+								if (data != null) {
+									var outputDiv = $('p#bitlyurl span');
+									$('p#status').html('success!');
+									$(outputDiv).html('<a href="'+ data +'" target="_blank">'+ data + '</a>');
+									$('p#bitlyurl').show();
+								} else {
+									$('p#status').html('<strong>Failure.</strong>  Make sure your <a href="http://bit.ly/a/your_api_key" target="_blank">bitly API username and key</a> are correct on line 25 of ajax_bitly.php');
+								}
+							});
+					}
+				});
+					
+				
+			});		
+		</script>
+	</head>
+	<body>
+	<h1>Shorten your URL with <a href="#">bitlyit</a></h1>
+	<p>Enter your long URL here:</p>
+	<input type="text" id="longUrl" value="http://www.playlookit.com" />
+	<a href="#" id="shortenit">Shorten this URL!</a>
+	<br /><br />
+	<p id="status"></p>
+	<p id="bitlyurl" style="display:none;">Your shortened URL is: <span style="font-weight:bold;"></span></p>
+	
+	</body>
+</html>
